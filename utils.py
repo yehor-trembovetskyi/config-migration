@@ -34,8 +34,10 @@ def update_game(lemur_game: dict, leo_admin_game: dict):
 
 
 def parse_dga_config(leo_admin_game: dict):
+    rng_software_ids_ = leo_admin_game['rngSoftwareIds'][0]
     return {
-        'rngSoftwareIds': leo_admin_game['rngSoftwareIds']
+        'softwareId': rng_software_ids_['softwareId'],
+        'rngId': rng_software_ids_['rngId']
     }
 
 
@@ -43,6 +45,8 @@ def update_game_dga_input(lemur_game: dict, leo_admin_game: dict):
     if lemur_game['game']['regulatoryGame'] is None:
         lemur_game['game']['regulatoryGame'] = {}
     lemur_game['game']['regulatoryGame']['dga'] = parse_dga_config(leo_admin_game)
+    # Normalize input
+    lemur_game['game']['liveInDK'] = lemur_game['game'].pop('liveInDk') or False
     return lemur_game
 
 def to_json(game: dict):
