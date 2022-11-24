@@ -10,7 +10,8 @@ if __name__ == '__main__':
 
     print(f'Client config used: {graphql_config}')
     print(f'Total games count: {len(games)}')
-    print(f'Games with softwareIds count: {len(leo_admin_games)}')
+    len_leo_admin_games = len(leo_admin_games)
+    print(f'Games with softwareIds count: {len_leo_admin_games}')
 
     i = -1
     successful = 0
@@ -20,7 +21,7 @@ if __name__ == '__main__':
     for leo_admin_game in leo_admin_games:
         i += 1
         print('\n-----------------------------------------\n')
-        print(f'Start processing game #{i} (uniqueId={leo_admin_game["uniqueId"]}, name={leo_admin_game["name"]})')
+        print(f'Start processing game #{i}/{len_leo_admin_games} (uniqueId={leo_admin_game["uniqueId"]}, name={leo_admin_game["name"]})')
         lemur_game = client.get_game(leo_admin_game['uniqueId'])
 
         if 'errors' in lemur_game:
@@ -65,6 +66,6 @@ if __name__ == '__main__':
 
     print('\n-----------------------------------------\n')
     print(f"Execution time: {format_time(time.time() - start_time)}")
-    print(f'Total games: {len(leo_admin_games)}')
+    print(f'Total games: {len_leo_admin_games}')
     print(f'Successful: {successful}')
     print(f'Update failed: {update_failed}')
