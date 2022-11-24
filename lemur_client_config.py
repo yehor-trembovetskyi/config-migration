@@ -12,7 +12,7 @@ prod_common = {
 dev_casino = {
     "api_url": "https://external-1.leo-dev-casino.lvg-tech.net/lemur/graphql",
     "headers": {
-        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOSIsInJvbGVzIjpbIlJPTEVfR0FNRV9SRUFEIl0sImlzcyI6ImxlbXVyIiwiZXhwIjoxNjY5Mjk3MzUzLCJpYXQiOjE2NjkyMTA5NTN9.eew8MWN5gIRbeRHVKDXyp4aevGnsMWaliFNEFa1XBkL0kw1q2-6T1Y8UaS99S64kMHvVNXKvvhPfjZm8oPD80g"
+        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MSIsInJvbGVzIjpbIlJPTEVfR0FNRV9XUklURSIsIlJPTEVfR0FNRV9SRUFEIl0sImlzcyI6ImxlbXVyIiwiZXhwIjoxNjY5MzkxNzk2LCJpYXQiOjE2NjkzMDUzOTZ9.XLwnsXX_w8y5Xat_2eXfUb5g_CSvJXEUxOJkBSLaoqGQ0n-8FCZA0HbXqYyJCQp24C2BoPcnyi9h10IEK-Ujrg"
     }
 }
 

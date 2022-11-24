@@ -65,6 +65,6 @@ def format_time(seconds: float) -> str:
 
 
 def p_failed(failed):
-    f = open("failed.txt", "a")
+    f = open("reports/failed.txt", "a")
     f.write(f'{str(to_json(failed))}\n')
     f.close()
