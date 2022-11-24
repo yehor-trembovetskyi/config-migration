@@ -5,7 +5,7 @@ import lemur_client_config
 if __name__ == '__main__':
     games = get_leo_admin_games()
     leo_admin_games = [game for game in games if has_rng_software_ids(game)]
-    graphql_config = lemur_client_config.localhost
+    graphql_config = lemur_client_config.dev_casino
     client = LemurGraphQLClient(**graphql_config)
 
     print(f'Client config used: {graphql_config}')

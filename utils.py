@@ -3,7 +3,7 @@ import time
 
 
 def get_leo_admin_games():
-    return json.load(open('games.json'))['docs']
+    return json.load(open('data/games.json'))['docs']
 
 
 def has_rng_software_ids(game: dict):
