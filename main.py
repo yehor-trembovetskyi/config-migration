@@ -29,8 +29,10 @@ if __name__ == '__main__':
             for e in lemur_game['errors']:
                 if "No game was found with id: " in e['message']:
                     p_failed({
-                        'Lemur doesnt have game with id': leo_admin_game['uniqueId']
+                        'message': 'Lemur doesnt have game with id',
+                        'uniqueId': leo_admin_game['uniqueId']
                     })
+                    print('-- NON-EXISTING GAME CASE --')
                     continue
 
             p_failed({
