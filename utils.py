@@ -6,6 +6,10 @@ def get_leo_admin_games():
     return json.load(open('games.json'))['docs']
 
 
+def has_rng_software_ids(game: dict):
+    return 'rngSoftwareIds' in game
+
+
 def has_italy_config(leo_admin_game: dict):
     return 'uniqueId' in leo_admin_game and 'aamsGameId' in leo_admin_game
 
@@ -28,6 +32,18 @@ def update_game(lemur_game: dict, leo_admin_game: dict):
     lemur_game['game']['liveInDK'] = lemur_game['game'].pop('liveInDk') or False
     return lemur_game
 
+
+def parse_dga_config(leo_admin_game: dict):
+    return {
+        'rngSoftwareIds': leo_admin_game['rngSoftwareIds']
+    }
+
+
+def update_game_dga_input(lemur_game: dict, leo_admin_game: dict):
+    if lemur_game['game']['regulatoryGame'] is None:
+        lemur_game['game']['regulatoryGame'] = {}
+    lemur_game['game']['regulatoryGame']['dga'] = parse_dga_config(leo_admin_game)
+    return lemur_game
 
 def to_json(game: dict):
     return json.dumps(game)

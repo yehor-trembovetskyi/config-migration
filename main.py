@@ -4,13 +4,13 @@ import lemur_client_config
 
 if __name__ == '__main__':
     games = get_leo_admin_games()
-    leo_admin_games = [game for game in games if has_italy_config(game)]
-    graphql_config = lemur_client_config.prod_common
+    leo_admin_games = [game for game in games if has_rng_software_ids(game)]
+    graphql_config = lemur_client_config.localhost
     client = LemurGraphQLClient(**graphql_config)
 
     print(f'Client config used: {graphql_config}')
     print(f'Total games count: {len(games)}')
-    print(f'Games with ADM config count: {len(leo_admin_games)}')
+    print(f'Games with softwareIds count: {len(leo_admin_games)}')
 
     i = -1
     successful = 0
@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
         print(f'Lemur game config: {to_json(lemur_game)}')
 
-        lemur_game = update_game(lemur_game, leo_admin_game)
+        lemur_game = update_game_dga_input(lemur_game, leo_admin_game)
         print(f'Updated lemur game config: {to_json(lemur_game)}')
         response = client.update_game(lemur_game)
         print(f'Lemur response: {to_json(response)}')
