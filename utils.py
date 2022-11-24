@@ -7,7 +7,7 @@ def get_leo_admin_games():
 
 
 def has_proper_fileds(game: dict):
-    return 'rngSoftwareIds' in game and len(game['rngSoftwareIds']) > 0 and 'uniqueId' in game
+    return 'rngSoftwareIds' in game and bool(game['rngSoftwareIds']) and 'uniqueId' in game
 
 
 def has_italy_config(leo_admin_game: dict):
