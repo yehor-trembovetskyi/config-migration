@@ -197,7 +197,7 @@ fragment ProviderFragment on Provider {
 fragment GameFragment on Game {
     id
     live
-    liveInDk
+    liveInDK
     noBonus
     rngMechanic
     bonusFactor
