@@ -6,8 +6,8 @@ def get_leo_admin_games():
     return json.load(open('data/games.json'))['docs']
 
 
-def has_rng_software_ids(game: dict):
-    return 'rngSoftwareIds' in game
+def has_proper_fileds(game: dict):
+    return 'rngSoftwareIds' in game and 'uniqueId' in game
 
 
 def has_italy_config(leo_admin_game: dict):

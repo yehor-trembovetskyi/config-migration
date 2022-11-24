@@ -4,7 +4,7 @@ import lemur_client_config
 
 if __name__ == '__main__':
     games = get_leo_admin_games()
-    leo_admin_games = [game for game in games if has_rng_software_ids(game)]
+    leo_admin_games = [game for game in games if has_proper_fileds(game)]
     graphql_config = lemur_client_config.dev_casino
     client = LemurGraphQLClient(**graphql_config)
 
@@ -25,6 +25,14 @@ if __name__ == '__main__':
 
         if 'errors' in lemur_game:
             update_failed += 1
+
+            for e in lemur_game['errors']:
+                if "No game was found with id: " in e['message']:
+                    p_failed({
+                        'Lemur doesnt have game with id': leo_admin_game['uniqueId']
+                    })
+                    continue
+
             p_failed({
                 'unique_id': leo_admin_game['uniqueId'],
                 'lemur_response': lemur_game,
