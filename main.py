@@ -65,7 +65,9 @@ if __name__ == '__main__':
                 })
                 print('-- REQUEST FAILED --')
         except Exception as e:
-            print(e)
+            p_failed({
+                'exception': e
+            })
             continue
 
     print('\n-----------------------------------------\n')
