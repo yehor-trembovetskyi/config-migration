@@ -2,8 +2,8 @@ import json
 import time
 
 
-def get_leo_admin_games():
-    return json.load(open('data/games.json'))['docs']
+def get_leo_admin_games(source):
+    return json.load(open('data/' + source))['docs']
 
 
 def has_proper_fileds(game: dict):
@@ -64,7 +64,7 @@ def format_time(seconds: float) -> str:
     return time.strftime('%H:%M:%S', time.gmtime(int(seconds)))
 
 
-def p_failed(failed):
+def p_failed(content):
     f = open("reports/failed.txt", "a")
-    f.write(f'{str(to_json(failed))}\n')
+    f.write(f'{str(to_json(content))}\n')
     f.close()

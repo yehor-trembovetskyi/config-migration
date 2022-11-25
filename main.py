@@ -1,9 +1,10 @@
 from utils import *
+from datetime import datetime
 from lemur import LemurGraphQLClient
 import lemur_client_config
 
 if __name__ == '__main__':
-    games = get_leo_admin_games()
+    games = get_leo_admin_games('games.json')
     leo_admin_games = [game for game in games if has_proper_fileds(game)]
     graphql_config = lemur_client_config.dev_casino
     client = LemurGraphQLClient(**graphql_config)
@@ -31,6 +32,7 @@ if __name__ == '__main__':
                 for e in lemur_game['errors']:
                     if "No game was found with id: " in e['message']:
                         p_failed({
+                            'ts': datetime.now(),
                             'message': 'Lemur doesnt have game with id',
                             'uniqueId': leo_admin_game['uniqueId']
                         })
@@ -38,6 +40,7 @@ if __name__ == '__main__':
                         continue
 
                 p_failed({
+                    'ts': datetime.now(),
                     'unique_id': leo_admin_game['uniqueId'],
                     'lemur_response': lemur_game,
                     'leo_admin_game': leo_admin_game
@@ -59,6 +62,7 @@ if __name__ == '__main__':
             else:
                 update_failed += 1
                 p_failed({
+                    'ts': datetime.now(),
                     'unique_id': leo_admin_game['uniqueId'],
                     'lemur_response': response,
                     'leo_admin_game': leo_admin_game
@@ -66,6 +70,7 @@ if __name__ == '__main__':
                 print('-- REQUEST FAILED --')
         except Exception as e:
             p_failed({
+                'ts': datetime.now(),
                 'exception': e
             })
             continue
